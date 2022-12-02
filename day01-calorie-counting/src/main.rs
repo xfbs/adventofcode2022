@@ -35,7 +35,13 @@ fn solve_part_two(data: &Vec<Vec<u32>>) -> (Vec<usize>, u32) {
 #[test]
 fn can_solve() {
     let data = include_str!("../example.txt");
-    assert_eq!(solve(&parse(data)), 24000);
+    assert_eq!(solve(&parse(data)), (3, 24000));
+}
+
+#[test]
+fn can_solve_part_two() {
+    let data = include_str!("../example.txt");
+    assert_eq!(solve_part_two(&parse(data)), (vec![3, 2, 4], 45000));
 }
 
 fn main() {
