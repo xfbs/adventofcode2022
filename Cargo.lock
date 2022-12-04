@@ -9,3 +9,7 @@ version = "0.1.0"
 [[package]]
 name = "day02-rock-paper-scissors"
 version = "0.1.0"
+
+[[package]]
+name = "day03-rucksack-reorganisation"
+version = "0.1.0"

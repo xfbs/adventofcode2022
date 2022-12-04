@@ -6,9 +6,7 @@ fn parse(data: &str) -> Vec<Vec<u32>> {
         if line.len() == 0 {
             out.push(vec![]);
         } else {
-            out.last_mut()
-                .unwrap()
-                .push(line.parse().unwrap());
+            out.last_mut().unwrap().push(line.parse().unwrap());
         }
     }
     out
@@ -23,13 +21,17 @@ fn solve(data: &Vec<Vec<u32>>) -> (usize, u32) {
 }
 
 fn solve_part_two(data: &Vec<Vec<u32>>) -> (Vec<usize>, u32) {
-    let mut data: Vec<(usize, u32)> = data.iter()
+    let mut data: Vec<(usize, u32)> = data
+        .iter()
         .map(|data| data.iter().sum())
         .enumerate()
         .collect();
     data.sort_by_key(|data| data.1);
     data.reverse();
-    (data.iter().take(3).map(|e| e.0).collect(), data.iter().take(3).map(|e| e.1).sum())
+    (
+        data.iter().take(3).map(|e| e.0).collect(),
+        data.iter().take(3).map(|e| e.1).sum(),
+    )
 }
 
 #[test]
