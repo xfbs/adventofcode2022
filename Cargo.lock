@@ -13,3 +13,7 @@ version = "0.1.0"
 [[package]]
 name = "day03-rucksack-reorganisation"
 version = "0.1.0"
+
+[[package]]
+name = "day04-camp-cleanup"
+version = "0.1.0"
