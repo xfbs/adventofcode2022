@@ -17,8 +17,7 @@ fn parse(input: &str) -> (Vec<Vec<char>>, Vec<Move>) {
 
         let mut chars = line.chars();
         chars.next();
-        let mut chars = chars.step_by(4).enumerate();
-        for (i, c) in chars {
+        for (i, c) in chars.step_by(4).enumerate() {
             if c != ' ' {
                 if stacks.len() <= i {
                     stacks.resize_with(i + 1, Default::default);
@@ -92,6 +91,37 @@ fn apply(mut stacks: Vec<Vec<char>>, moves: &[Move]) -> Vec<Vec<char>> {
     stacks
 }
 
+#[test]
+fn can_apply() {
+    let example = include_str!("../example.txt");
+    let (stack, moves) = parse(example);
+    let result = apply(stack, &moves);
+    assert_eq!(result, vec![vec!['C'], vec!['M'], vec!['P', 'D', 'N', 'Z']]);
+}
+
+fn apply_two(mut stacks: Vec<Vec<char>>, moves: &[Move]) -> Vec<Vec<char>> {
+    for mov in moves {
+        let mut temp = Vec::new();
+        for _ in 0..mov.count {
+            let item = stacks[mov.source - 1].pop().unwrap();
+            temp.push(item);
+        }
+        while let Some(item) = temp.pop() {
+            stacks[mov.target - 1].push(item);
+        }
+    }
+
+    stacks
+}
+
+#[test]
+fn can_apply_twp() {
+    let example = include_str!("../example.txt");
+    let (stack, moves) = parse(example);
+    let result = apply_two(stack, &moves);
+    assert_eq!(result, vec![vec!['M'], vec!['C'], vec!['P', 'Z', 'N', 'D']]);
+}
+
 fn solve(stacks: &Vec<Vec<char>>) -> String {
     stacks
         .iter()
@@ -109,11 +139,23 @@ fn can_solve() {
     assert_eq!(result, "CMZ");
 }
 
+#[test]
+fn can_solve_two() {
+    let example = include_str!("../example.txt");
+    let (stack, moves) = parse(example);
+    let stack = apply_two(stack, &moves);
+    let result = solve(&stack);
+    assert_eq!(result, "MCD");
+}
+
 fn main() {
     let file = std::env::args().nth(1).unwrap();
     let data = std::fs::read_to_string(file).unwrap();
     let (stack, moves) = parse(&data);
-    let stack = apply(stack, &moves);
+    let moved = apply(stack.clone(), &moves);
+    let result = solve(&moved);
+    println!("{result}");
+    let stack = apply_two(stack, &moves);
     let result = solve(&stack);
     println!("{result}");
 }
