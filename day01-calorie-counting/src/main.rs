@@ -1,5 +1,3 @@
-use std::fs::File;
-
 fn parse(data: &str) -> Vec<Vec<u32>> {
     let mut out = vec![vec![]];
     for line in data.lines() {
@@ -16,7 +14,7 @@ fn solve(data: &Vec<Vec<u32>>) -> (usize, u32) {
     data.iter()
         .map(|data| data.iter().sum())
         .enumerate()
-        .max_by_key(|(index, sum)| *sum)
+        .max_by_key(|(_index, sum)| *sum)
         .unwrap()
 }
 
