@@ -17,3 +17,7 @@ version = "0.1.0"
 [[package]]
 name = "day04-camp-cleanup"
 version = "0.1.0"
+
+[[package]]
+name = "day05-supply-stacks"
+version = "0.1.0"
