@@ -25,3 +25,7 @@ version = "0.1.0"
 [[package]]
 name = "day06-tuning-trouble"
 version = "0.1.0"
+
+[[package]]
+name = "day07-no-space"
+version = "0.1.0"
