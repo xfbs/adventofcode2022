@@ -7,5 +7,6 @@ members = [
     "day05-supply-stacks",
     "day06-tuning-trouble",
     "day07-no-space",
+    "day08-treetop-tree-house",
     "day10-cathode-ray-tube",
 ]

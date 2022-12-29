@@ -31,5 +31,9 @@ name = "day07-no-space"
 version = "0.1.0"
 
 [[package]]
+name = "day08-treetop-tree-house"
+version = "0.1.0"
+
+[[package]]
 name = "day10-cathode-ray-tube"
 version = "0.1.0"
