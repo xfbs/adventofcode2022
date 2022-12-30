@@ -9,4 +9,5 @@ members = [
     "day07-no-space",
     "day08-treetop-tree-house",
     "day10-cathode-ray-tube",
+    "day12-hill-climbing",
 ]
